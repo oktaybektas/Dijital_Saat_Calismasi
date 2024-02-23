@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Gazze'nin Çocukları</title>
+</head>
+<body>
+    <div id="container">Hatalı İşlem ...</div>
+    <script type="text/javascript">
+        function clock(){
+            var date    = new Date();
+            var hours   = date.getHours();
+            var minutes = date.getMinutes();
+            var seconds = date.getSeconds();
+            if(hours < 10){hours = "0" + hours} /*  Örnek Saat 10 dan küçükse önüne sıfır ekle 09:22:25 */
+            if(minutes < 10){minutes = "0" + minutes} /*  Dakika 10 dan küçükse başına 0 ekle*/
+            if(seconds < 10){seconds = "0" + seconds} /*  Saniye 10 dan küçükse başına 0 ekle*/
+            var time = hours+":"+minutes+":"+seconds;
+            const myArray = time.split("");
+            document.getElementById("container").innerHTML =
+            "<img id='number' src=resim/"+myArray[0]+".png>"+
+            "<img id='number' src=resim/"+myArray[1]+".png>"+
+            "<img id='noktaBir' src=resim/nokta.png>"+
+            "<img id='number' src=resim/"+myArray[3]+".png>"+
+            "<img id='number' src=resim/"+myArray[4]+".png>"+
+            "<img id='noktaIki' src=resim/nokta.png>"+
+            "<img id='number' src=resim/"+myArray[6]+".png>"+
+            "<img id='number' src=resim/"+myArray[7]+".png>"
+            /*Saniye çalışmıyor Şimdi saniyeyi çalışır hale getireceğiz*/
+            setTimeout("clock()",1000);
+            /*Noktaları her yarım saniyede bir görünür yapıp saklayalım*/
+            $('#noktaBir').delay(500).fadeOut(500);
+            $('#noktaIki').delay(500).fadeOut(500);
+            /*Süper. Fakat css işlemleri yapmamız gerekiyor .Çünkü görüntü oynuyor*/
+            /*Şimdi sıra rakamlarda*/
+        }
+        clock();
+    </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</body>
+</html>
